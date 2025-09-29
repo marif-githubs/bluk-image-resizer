@@ -13,27 +13,23 @@ def pick_folder():
 
 def recursive_folder_selection(input_path, output_path):
     if os.path.isfile(input_path):
-        # Process image file
+
         name = os.path.basename(input_path)
         sized_image = crop_images.crop_images_in_folder(input_path)
         if sized_image:
             sized_image.save(os.path.join(output_path, name))
-        print(f"Processed: {input_path} -> {output_path}/{name}")
 
     elif os.path.isdir(input_path):
-        # Ensure output folder exists
+
         os.makedirs(output_path, exist_ok=True)
 
-        # Loop over children
         for filename in os.listdir(input_path):
             in_path = os.path.join(input_path, filename)
             out_path = os.path.join(output_path, filename)
 
             if os.path.isdir(in_path):
-                # Recurse into subfolder
                 recursive_folder_selection(in_path, out_path)
             else:
-                # Process image file
                 recursive_folder_selection(in_path, output_path)
 
 
@@ -46,6 +42,3 @@ if __name__ == "__main__":
         os.makedirs(output_folder, exist_ok=True)
 
         recursive_folder_selection(input_folder, output_folder)
-        print(f"\n✅ All images processed. Output at: {output_folder}")
-    else:
-        print("No input folder selected.")
