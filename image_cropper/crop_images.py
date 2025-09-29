@@ -5,7 +5,6 @@ def crop_images_in_folder(image_path):
     valid_extensions = (".jpg", ".jpeg", ".png")
 
     if image_path.lower().endswith(valid_extensions):
-
         try:
             img = Image.open(image_path)
             resized_img = img.resize((500, 500))
