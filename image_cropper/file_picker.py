@@ -6,7 +6,7 @@ from image_cropper import crop_images
 
 def pick_folder():
     root = tk.Tk()
-    root.withdraw()  # hide the root window
+    root.withdraw()
     folder_path = filedialog.askdirectory(title="Select Input Folder")
     return folder_path
 

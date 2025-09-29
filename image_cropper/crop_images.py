@@ -2,7 +2,6 @@ from PIL import Image
 
 def crop_images_in_folder(image_path):
 
-    # Supported image formats
     valid_extensions = (".jpg", ".jpeg", ".png")
 
     if image_path.lower().endswith(valid_extensions):
