@@ -30,6 +30,7 @@ def recursive_folder_selection(input_path, output_path):
 
 
 if __name__ == "__main__":
+
     input_folder = pick_folder()
     if input_folder:
         output_folder = os.path.join(
