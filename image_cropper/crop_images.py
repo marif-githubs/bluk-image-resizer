@@ -1,7 +1,6 @@
 from PIL import Image
-size = (500, 500)
 
-def crop_images_in_folder(image_path):
+def crop_images_in_folder(image_path, size):
 
     valid_extensions = (".jpg", ".jpeg", ".png")
 

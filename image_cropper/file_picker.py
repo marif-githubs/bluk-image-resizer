@@ -10,10 +10,10 @@ def pick_folder():
     folder_path = filedialog.askdirectory(title="Select Input Folder")
     return folder_path
 
-def recursive_folder_selection(input_path, output_path):
+def recursive_folder_selection(input_path, output_path, size):
     if os.path.isfile(input_path):
         name = os.path.basename(input_path)
-        sized_image = crop_images.crop_images_in_folder(input_path)
+        sized_image = crop_images.crop_images_in_folder(input_path, size)
         if sized_image:
             sized_image.save(os.path.join(output_path, name))
 
@@ -24,18 +24,7 @@ def recursive_folder_selection(input_path, output_path):
             out_path = os.path.join(output_path, filename)
 
             if os.path.isdir(in_path):
-                recursive_folder_selection(in_path, out_path)
+                recursive_folder_selection(in_path, out_path, size)
             else:
-                recursive_folder_selection(in_path, output_path)
+                recursive_folder_selection(in_path, output_path, size)
 
-
-if __name__ == "__main__":
-
-    input_folder = pick_folder()
-    if input_folder:
-        output_folder = os.path.join(
-            os.path.dirname(input_folder), "resized_images_folder"
-        )
-        os.makedirs(output_folder, exist_ok=True)
-
-        recursive_folder_selection(input_folder, output_folder)
