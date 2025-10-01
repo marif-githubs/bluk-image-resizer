@@ -15,19 +15,16 @@ class ImageResizerApp(tk.Tk):
         main_frame = tk.Frame(self)
         main_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-        # Input Folder
         self.label_input = tk.Label(main_frame, text="Select Folder")
         self.button_input = tk.Button(main_frame, text="Select Folder", command=self.select_input_folder)
         self.button_input.pack(pady=(20, 5))
         self.label_input.pack(pady=(5, 10))
 
-        # Output Folder
         self.label_output = tk.Label(main_frame, text="Save Location")
         self.button_output = tk.Button(main_frame, text="Save Location", command=self.select_output_folder)
         self.button_output.pack(pady=(10, 5))
         self.label_output.pack(pady=(5, 10))
 
-        # Image Dimension Inputs
         dim_frame = tk.Frame(main_frame)
         dim_frame.pack(pady=(10, 10))
 
@@ -61,11 +58,9 @@ class ImageResizerApp(tk.Tk):
         input_folder = getattr(self, "input_folder", None)
         output_location = getattr(self, "output_folder", None)
 
-        # Read image dimensions from entry fields
         width = self.entry_width.get()
         height = self.entry_height.get()
 
-        # Validation
         if not input_folder or not output_location:
             messagebox.showwarning("Missing Selection", "Please select both input and output folders.")
             return
@@ -85,7 +80,6 @@ class ImageResizerApp(tk.Tk):
 
         messagebox.showinfo("Done", f"Images resized and saved to:\n{output_folder}")
 
-        # Reset UI
         self.input_folder = None
         self.output_folder = None
         self.label_input.config(text="Select Folder")
